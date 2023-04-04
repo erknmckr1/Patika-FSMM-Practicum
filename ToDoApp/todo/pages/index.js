@@ -1,9 +1,7 @@
-import Layout from '@/components/layout/Layout'
-import Head from 'next/head'
-
-
-
-
+import Layout from "@/components/layout/Layout";
+import Head from "next/head";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 export default function Home() {
   return (
     <>
@@ -14,8 +12,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-       <Layout/>
+        <Provider store={store} >
+          <Layout />
+        </Provider>
       </>
     </>
-  )
+  );
 }

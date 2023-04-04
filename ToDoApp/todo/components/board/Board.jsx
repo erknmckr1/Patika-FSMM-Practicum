@@ -1,12 +1,15 @@
 import React from "react";
-import Tasks from "./Tasks";
-import Chart from "./Chart";
-import Folder from "./Folder";
-import Notes from "./Notes";
+import Tasks from "./sides/Tasks";
+import Chart from "./sides/Chart";
+import Folder from "./sides/Folder";
+import Notes from "./sides/Notes";
+import TaskModal from "../Modals/TaskModal";
+import { useSelector } from "react-redux";
 
 function Board() {
+  const {isTaskModal} = useSelector((state)=>state.Task)
   return (
-    <div className="w-[65%] p-3 h-full bg-[#F8F9F9] rounded-l-[40px] ">
+    <div className="w-[65%] p-3 h-full bg-[#F8F9F9] rounded-l-[40px] relative ">
       {/* search ınput start */}
       <div className=" text-[30px] h-[5rem] py-5 flex justify-between items-center gap-x-4">
         <h4 className="px-5 flex font-semibold">Dashboard</h4>
@@ -28,6 +31,11 @@ function Board() {
           <Notes/>
         </div>
       </div>
+      {/* Task modal komponenti isTaskModal'ın durumuna gore ekrana gelecek  */}
+      <div >
+      { isTaskModal&& <TaskModal/>}
+      </div>
+      
     </div>
   );
 }

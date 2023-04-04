@@ -9,7 +9,16 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        dancing:["Dancing Script", "cursive"],
+      },
+      colors:{
+        title:"#F5B041",
+        activebtn:"#F4D03F"
+      }
+
+    },
   },
   plugins: [],
 }
