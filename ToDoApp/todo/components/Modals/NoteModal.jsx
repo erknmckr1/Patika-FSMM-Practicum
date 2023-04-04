@@ -7,16 +7,17 @@ import { MdAddTask } from "react-icons/md";
 // icons
 import { useSelector, useDispatch } from "react-redux";
 import OutsideClickHandler from "react-outside-click-handler";
-import { handleTaskModal } from "@/redux/taskSlice";
+import { handleNotesModal } from "@/redux/taskSlice";
 
-function TaskModal() {
+function NoteModal() {
   const dispatch = useDispatch();
   const [taskDate, setTaskDate] = useState("");
-  const [addTask, setAddTask] = useState("");
-  const [isDateDisabled, setİsDateDisabled] = useState(true);
-  const { isTaskModal } = useSelector((state) => state.Task);
-  const handleTask = (e) => {
-    setAddTask(e.target.value);
+  const [addNote, setAddNote] = useState("");
+  const [isNoteDisabled, setİsNoteDisabled] = useState(true);
+  const { isNoteModal } = useSelector((state) => state.Task);
+
+  const handleNote = (e) => {
+    setAddNote(e.target.value);
   };
 
   // Date inputun degerını aldık
@@ -24,55 +25,59 @@ function TaskModal() {
     setTaskDate(e.target.value);
   };
 
-  //Date input için disabled durumunu gunceleyecek fonksıyon 
+  //Date input için disabled durumunu gunceleyecek fonksıyon
   const handleDisabled = (e) => {
     e.preventDefault();
-    setİsDateDisabled((prev) => !prev);
+    setİsNoteDisabled((prev) => !prev);
   };
 
-  // Kapsayıcımızın dısına tıkladıgımızda Task modal ın ekrandan gıtmesı ıcın clıckoutside kutuphanesini kullandık ve kapsayıcı dısına tıkladıgımızda isTaskModal'ın degerının degısmesı ıcın dıspatch ettik.
+  // Kapsayıcımızın dısına tıkladıgımızda Note modal ın ekrandan gıtmesı ıcın clıckoutside kutuphanesini kullandık ve kapsayıcı dısına tıkladıgımızda isNoteModal'ın degerının degısmesı ıcın dıspatch ettik.
   const clickOutSide = () => {
-    dispatch(handleTaskModal());
+    dispatch(handleNotesModal());
   };
   return (
     <div
-      className={`absolute top-0 right-0 w-full h-full bg-white opacity-90 ${
-        isTaskModal ? "opacity-100" : "opacity-0"
+      className={`absolute top-0 right-0 w-full h-full bg-white opacity-90  ${
+        isNoteModal ? "opacity-100" : "opacity-0"
       }`}
     >
       <div className="w-full h-full flex justify-center items-center relative">
         {/* kapsayıcı dısına tıkladııgmız taktırde clickoutside fonksıyonu tetıklenecek. */}
-          <div className="w-3/3 h-3/5 bg-slate-500 rounded-3xl opacity-100 ">
+        <div className="w-3/3 h-3/5 bg-slate-500 rounded-3xl opacity-100 ">
           <OutsideClickHandler onOutsideClick={clickOutSide}>
             <div className="flex flex-col items-center justify-center">
-              <h4 className="font-dancing text-[50px] w-full h-full p-3 text-title font-bold underline underline-offset-8 flex justify-center ">
-                Add Task
+              <h4 className="font-dancing text-[50px] w-full h-full text-title font-bold underline underline-offset-8 flex justify-center pb-3 ">
+                Add Note
               </h4>
 
-              <form className="w-full h-full flex flex-col gap-y-10 justify-between items-center   text-[20px] px-5 text-white ">
-                {/* task input start */}
-                <div className="w-full flex flex-col  items-start px-5">
-                  <label className="text-[15px]" htmlFor="">
+              <form className="w-full h-full flex flex-col gap-y-5 justify-between items-center   text-[20px] text-white px-5 ">
+                {/* Note input start */}
+                <div className="w-full h-full flex flex-col  px-5">
+                  <label className="text-[13px]" htmlFor="">
                     {" "}
-                    Write Task{" "}
+                    Write Note{" "}
                   </label>
-                  <input
-                    className="w-3/3 py-1 px-5 rounded-3xl bg-[#BFC9CA] bg-opacity-50 outline-none "
+
+                  <textarea
+                    className="w-3/3 h-[6rem]   rounded-3xl bg-[#BFC9CA] bg-opacity-50 outline-none "
                     type="text"
                     id="addTask"
-                    placeholder="What is your plan ?"
-                    value={addTask}
-                    onChange={handleTask}
+                    placeholder="Write something"
+                    value={addNote}
+                    onChange={handleNote}
                   />
                 </div>
                 {/* task input end */}
 
                 {/* date input start */}
                 <div className="w-full flex flex-col justify-between  px-5">
-                  <label className="text-[15px]" htmlFor="">
-                    {" "}
-                    Choose Date{" "}
-                  </label>
+                  <div>
+                    <label className="text-[13px]" htmlFor="">
+                      {" "}
+                      Choose Date{" "}
+                    </label>
+                  </div>
+
                   <div className="w-full h-full flex justify-between items-center">
                     <input
                       className="w-2/3 py-1 px-5 rounded-3xl bg-[#BFC9CA] bg-opacity-50 outline-none "
@@ -81,13 +86,13 @@ function TaskModal() {
                       name="taskDate"
                       value={taskDate}
                       onChange={handleChangeDate}
-                      disabled={isDateDisabled}
+                      disabled={isNoteDisabled}
                     />
                     <button
                       onClick={handleDisabled}
                       className="btn w-1/3 mr-10 text-black transition-all"
                     >
-                      {isDateDisabled ? <FaPlus /> : <GrStatusDisabled />}
+                      {isNoteDisabled ? <FaPlus /> : <GrStatusDisabled />}
                     </button>
                   </div>
                 </div>
@@ -100,12 +105,11 @@ function TaskModal() {
                 {/* submıt btn */}
               </form>
             </div>
-            </OutsideClickHandler>
-          </div>
-        
+          </OutsideClickHandler>
+        </div>
       </div>
     </div>
   );
 }
 
-export default TaskModal;
+export default NoteModal;
