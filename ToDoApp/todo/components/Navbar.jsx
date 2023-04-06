@@ -22,7 +22,7 @@ function Navbar() {
   const handleNote = () => {
     dispatch(handleNotesModal())
   }
-  console.log(isNoteModal)
+  
   return (
     <div className="w-[6rem] bg-[#B6D4CE] h-full flex flex-col justify-between py-10 items-center rounded-l-3xl ">
       <div className="relative bg-white w-12 h-12 rounded-full ">
@@ -32,7 +32,7 @@ function Navbar() {
         <button onClick={handleTask}  className={`btn ${isTaskModal && '!bg-activebtn'}`}>
           <FaTasks />
         </button>
-        <button onClick={handleNote} className="btn">
+        <button className={`btn ${isNoteModal && '!bg-activebtn'}`} onClick={handleNote} >
           <TbNotes />
         </button>
         <button className="btn">

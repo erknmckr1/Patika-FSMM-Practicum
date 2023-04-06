@@ -1,6 +1,7 @@
 import React from 'react'
-
+import { useSelector } from 'react-redux'
 function Folder() {
+  const {tasks} = useSelector((state)=>state.Task)
   return (
     <div className='h-1/3 w-full bg-white rounded-3xl p-3 border-2'>
             <div className='flex justify-between items-center '>

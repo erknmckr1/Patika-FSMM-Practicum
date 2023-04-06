@@ -7,7 +7,7 @@ import { MdAddTask } from "react-icons/md";
 // icons
 import { useSelector, useDispatch } from "react-redux";
 import OutsideClickHandler from "react-outside-click-handler";
-import { handleTaskModal } from "@/redux/taskSlice";
+import { handleTaskModal,handleAddTask} from "@/redux/taskSlice";
 
 function TaskModal() {
   const dispatch = useDispatch();
@@ -15,6 +15,8 @@ function TaskModal() {
   const [addTask, setAddTask] = useState("");
   const [isDateDisabled, setİsDateDisabled] = useState(true);
   const { isTaskModal } = useSelector((state) => state.Task);
+
+  //Task ınputun degerını state e atadık
   const handleTask = (e) => {
     setAddTask(e.target.value);
   };
@@ -24,7 +26,7 @@ function TaskModal() {
     setTaskDate(e.target.value);
   };
 
-  //Date input için disabled durumunu gunceleyecek fonksıyon 
+  //Date input için disabled durumunu gunceleyecek fonksıyon
   const handleDisabled = (e) => {
     e.preventDefault();
     setİsDateDisabled((prev) => !prev);
@@ -34,6 +36,22 @@ function TaskModal() {
   const clickOutSide = () => {
     dispatch(handleTaskModal());
   };
+
+  // Submit func start
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (addTask === "") return; 
+    const value = {
+      todo: { addTask },
+      date:{taskDate}, 
+    };
+    dispatch(handleAddTask(value))
+    setAddTask("")
+  };
+  // submit func end
+
+  
   return (
     <div
       className={`absolute top-0 right-0 w-full h-full bg-white opacity-90 ${
@@ -42,14 +60,14 @@ function TaskModal() {
     >
       <div className="w-full h-full flex justify-center items-center relative">
         {/* kapsayıcı dısına tıkladııgmız taktırde clickoutside fonksıyonu tetıklenecek. */}
-          <div className="w-3/3 h-3/5 bg-slate-500 rounded-3xl opacity-100 ">
+        <div className="w-3/3 h-3/5 bg-slate-500 rounded-3xl opacity-100 ">
           <OutsideClickHandler onOutsideClick={clickOutSide}>
             <div className="flex flex-col items-center justify-center">
               <h4 className="font-dancing text-[50px] w-full h-full p-3 text-title font-bold underline underline-offset-8 flex justify-center ">
                 Add Task
               </h4>
 
-              <form className="w-full h-full flex flex-col gap-y-10 justify-between items-center   text-[20px] px-5 text-white ">
+              <form onSubmit={handleSubmit} className="w-full h-full flex flex-col gap-y-10 justify-between items-center text-[20px] px-5 text-white ">
                 {/* task input start */}
                 <div className="w-full flex flex-col  items-start px-5">
                   <label className="text-[15px]" htmlFor="">
@@ -100,9 +118,8 @@ function TaskModal() {
                 {/* submıt btn */}
               </form>
             </div>
-            </OutsideClickHandler>
-          </div>
-        
+          </OutsideClickHandler>
+        </div>
       </div>
     </div>
   );
