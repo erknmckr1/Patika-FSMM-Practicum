@@ -9,16 +9,20 @@ import {
 } from "@/redux/taskSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-function Tasks() {
+function Tasks({search}) {
+  console.log(search)
   const dispatch = useDispatch();
   const { tasks } = useSelector((state) => state.Task);
-  
+ 
+  // board komponentımızdeki ınputa gırdıgımız karaktere göre tasks ve notes dızımızı fıltreleyıp buna gore listeleme işlemimizi gerçekleştirdik.
+  const filteredTasks = tasks.filter((task)=>task.todo.addTask.toLowerCase().includes(search.toLowerCase()))
+
+
   //Tıkladıgımız taskın ıd'sını alıp tasklarımızın arasından eşleşen var ise bu taskın id'sini handleCompleted actionu ile yolladık. store'da taskın id'si ile gonderdıgımız id'yi eşleştirip isCompleted degerını degıstırecegız.
   const completedTask = (id) => {
     tasks.forEach((task) => {
       if (task.id === id) {
         dispatch(handleCompleted({ id: task.id }));
-        console.log(task.id);
       }
     });
   };
@@ -54,7 +58,7 @@ function Tasks() {
 
       {/* todo start  */}
       <div className="mt-3 flex flex-col gap-y-5  ">
-        {tasks.map((task, index) => {
+        {filteredTasks.map((task, index) => {
           // Listeleyecegımız her tasklar ıcın komponent olusturup her task ıcın  bır komponent dondurebılırdık. isCompleted ozellıgı true olmayan tasakları lıstelıyoruz.
           if (!task.isCompleted) {
             return (
