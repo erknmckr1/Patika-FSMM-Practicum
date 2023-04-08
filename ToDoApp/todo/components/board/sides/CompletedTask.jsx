@@ -1,3 +1,4 @@
+import React from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { MdOutlineDeleteSweep, MdOutlineModeEditOutline } from "react-icons/md";
 import {
@@ -8,12 +9,10 @@ import {
   setEditingTask,
 } from "@/redux/taskSlice";
 import { useSelector, useDispatch } from "react-redux";
-
-function Tasks() {
-  const dispatch = useDispatch();
+function CompletedTasks() {
+  const dispatch = useDispatch()
   const { tasks } = useSelector((state) => state.Task);
-  
-  //Tıkladıgımız taskın ıd'sını alıp tasklarımızın arasından eşleşen var ise bu taskın id'sini handleCompleted actionu ile yolladık. store'da taskın id'si ile gonderdıgımız id'yi eşleştirip isCompleted degerını degıstırecegız.
+
   const completedTask = (id) => {
     tasks.forEach((task) => {
       if (task.id === id) {
@@ -34,29 +33,20 @@ function Tasks() {
   const deletedTaskAll = () => {
     dispatch(handleDeletedAll());
   };
-
-  // editleyecegımız taskı tasks dızısı ıcınden find ile  bulduk setEditingTask reducerını kullanarak  editingTask state'ini store da guncelledık. EditingTask state'i click attıgımız taskın verılerını tutacak.
-  const editToTask = (id) => {
-    dispatch(handleEditModal());
-    const taskEdit = tasks.find((task) => id === task.id);
-    dispatch(setEditingTask(taskEdit));
-  };
   return (
-    <div className="w-full min-h-[23rem]  border p-3 rounded-3xl bg-white overflow-y-auto ">
-      {/* title start */}
-      <div className="flex justify-between items-center w-full border-b ">
-        <h5 className="font-bold">Recent Task</h5>
+    <div className="h-1/3 w-full border bg-white rounded-3xl p-3 overflow-y-auto ">
+      {/*  */}
+      <div className="flex justify-between items-center border-b  ">
+        <h5 className="font-semibold">Completed Tasks</h5>
         <button onClick={deletedTaskAll} className="btn">
           <MdOutlineDeleteSweep />
         </button>
       </div>
-      {/* title end */}
+      {/*  */}
 
-      {/* todo start  */}
       <div className="mt-3 flex flex-col gap-y-5  ">
         {tasks.map((task, index) => {
-          // Listeleyecegımız her tasklar ıcın komponent olusturup her task ıcın  bır komponent dondurebılırdık. isCompleted ozellıgı true olmayan tasakları lıstelıyoruz.
-          if (!task.isCompleted) {
+          if (task.isCompleted) {
             return (
               <div
                 key={index}
@@ -89,9 +79,6 @@ function Tasks() {
                     >
                       <RiDeleteBin5Line />
                     </button>
-                    <button onClick={() => editToTask(task.id)} className="btn">
-                      <MdOutlineModeEditOutline />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -99,8 +86,9 @@ function Tasks() {
           }
         })}
       </div>
+
     </div>
   );
 }
 
-export default Tasks;
+export default CompletedTasks;

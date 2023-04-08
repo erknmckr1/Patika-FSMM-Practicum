@@ -1,7 +1,7 @@
 import React from "react";
 import Tasks from "./sides/Tasks";
 import Chart from "./sides/Chart";
-import Folder from "./sides/Folder";
+import CompletedTasks from "./sides/CompletedTask";
 import Notes from "./sides/Notes";
 import TaskModal from "../Modals/taskModal/TaskModal";
 import { useSelector } from "react-redux";
@@ -9,7 +9,8 @@ import TaskEditModal from "../Modals/taskModal/TaskEditModal";
 import NoteModal from "../Modals/NoteModal";
 
 function Board() {
-  const {isTaskModal,isEditModal,isNoteModal} = useSelector((state)=>state.Task)
+  const {isTaskModal,isEditModal} = useSelector((state)=>state.Task)
+  const {isNoteModal} = useSelector((state)=>state.Note)
   return (
     <div className="w-[65%] p-3 h-full bg-[#F8F9F9] rounded-l-[40px] relative ">
       {/* search ınput start */}
@@ -29,7 +30,7 @@ function Board() {
           <Chart />
         </div>
         <div className="w-1/2 h-full flex flex-col gap-y-4 ">
-          <Folder/>
+          <CompletedTasks/>
           <Notes/>
         </div>
       </div>

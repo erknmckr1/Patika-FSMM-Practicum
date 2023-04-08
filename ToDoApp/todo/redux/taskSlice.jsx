@@ -10,7 +10,7 @@ const taskSlice = createSlice({
     //Modalları acıp kapatmak ıcın olusturdugumuz state'ler
     isTaskModal: false,
     isEditModal: false,
-    isNoteModal: false,
+    
   },
   reducers: {
     handleAddTask: {
@@ -36,9 +36,6 @@ const taskSlice = createSlice({
     },
     handleEditModal: (state) => {
       state.isEditModal = !state.isEditModal;
-    },
-    handleNotesModal: (state) => {
-      state.isNoteModal = !state.isNoteModal;
     },
     //
 
@@ -75,7 +72,6 @@ export default taskSlice.reducer;
 export const {
   handleTaskModal,
   handleEditModal,
-  handleNotesModal,
   handleAddTask,
   handleCompleted,
   handleDeleted,

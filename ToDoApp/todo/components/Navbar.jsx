@@ -9,10 +9,13 @@ import { MdOutlineFindInPage } from "react-icons/md";
 import { FcStatistics } from "react-icons/fc";
 //icons
 import { useSelector,useDispatch } from "react-redux";
-import { handleTaskModal,handleNotesModal } from "@/redux/taskSlice";
+import { handleTaskModal } from "@/redux/taskSlice";
+import { handleNoteModal } from "@/redux/noteSlice";
 function Navbar() {
   const dispatch = useDispatch()
-  const {isTaskModal,isNoteModal} = useSelector((state)=>state.Task)
+  const {isTaskModal} = useSelector((state)=>state.Task)
+  
+  const {isNoteModal} = useSelector((state)=>state.Note)
 
   // Task butonuna clıkc eventı vererek dispatch ile handleTaskModal'ı tetıkleyerek redux uzerınde tanımladıgımız isTaskModal state'ini guncelledık. True false olma durumunu gore ekrana gelecek. Bu işlemi board componnetınde yapacagız.
   const handleTask = () =>{
@@ -20,7 +23,7 @@ function Navbar() {
   }
 
   const handleNote = () => {
-    dispatch(handleNotesModal())
+    dispatch(handleNoteModal())
   }
   
   return (
