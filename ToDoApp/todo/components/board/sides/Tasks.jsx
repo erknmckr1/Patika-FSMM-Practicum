@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 function Tasks({search}) {
-  console.log(search)
+
   const dispatch = useDispatch();
   const { tasks } = useSelector((state) => state.Task);
  

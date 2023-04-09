@@ -15,7 +15,6 @@ function Notes({search}) {
   // board komponentımızdeki ınputa gırdıgımız karaktere göre tasks ve notes dızımızı fıltreleyıp buna gore listeleme işlemimizi gerçekleştirdik. 
  const filtereNotes = notes.filter((note)=> note.title.title.toLowerCase().includes(search.toLowerCase()))
 
- console.log(filtereNotes)
   // tıkladıgımız note'ın id sini alıp notes dızısınde bulacagız ve copyNote state'ini store da guncelleyecegız.
   const handleShowMore = (id) => {
     dispatch(handleShowModal());

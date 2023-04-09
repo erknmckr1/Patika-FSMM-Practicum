@@ -18,7 +18,7 @@ function NoteModal() {
   const [isNoteDisabled, setİsNoteDisabled] = useState(true);
   const {isNoteModal} = useSelector(state=>state.Note)
 
-console.log(title)
+
   
   const handleNote = (e) => {
     setAddNote(e.target.value);

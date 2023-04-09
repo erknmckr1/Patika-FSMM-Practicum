@@ -5,7 +5,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 function NoteShowModal() {
   const dispatch = useDispatch();
   const { isShowModal,currentNote } = useSelector((state) => state.Note);
-  console.log(currentNote)
+
   const clickOutSide = () => {
     dispatch(handleShowModal());
   };
