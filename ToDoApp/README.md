@@ -12,3 +12,5 @@ pnpm dev
 - tailwind css 
 - react icons
 - https://www.npmjs.com/package/react-outside-click-handler
+
+![todo image](todo/public/Images/todo.png)
