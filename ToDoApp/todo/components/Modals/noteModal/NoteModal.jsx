@@ -47,6 +47,7 @@ console.log(title)
     e.preventDefault()
     const value = {title:{title}, note:{addNote},date:{noteDate}}
     dispatch(handleAddNote(value))
+    dispatch(handleNoteModal())
   }
   return ( 
     <div

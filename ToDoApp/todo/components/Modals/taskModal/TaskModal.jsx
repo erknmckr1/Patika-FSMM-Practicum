@@ -48,6 +48,7 @@ function TaskModal() {
     };
     dispatch(handleAddTask(value))
     setAddTask("")
+    dispatch(handleTaskModal());
   };
   // submit func end
 

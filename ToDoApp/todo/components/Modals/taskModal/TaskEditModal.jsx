@@ -45,8 +45,8 @@ function TaskEditModal() {
         e.preventDefault()
         const {id} = editingTask;
         const updateValue = {id:id,editTask:editTask,editDate:editDate}
-        console.log(updateValue.editTask)
         dispatch(updateTask(updateValue))
+        dispatch(handleEditModal());
       }
   // submit func ends
 
