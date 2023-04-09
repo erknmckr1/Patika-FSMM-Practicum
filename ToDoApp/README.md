@@ -13,4 +13,6 @@ pnpm dev
 - react icons
 - https://www.npmjs.com/package/react-outside-click-handler
 
+## live : https://todoaoo.netlify.app/tr-TR
+
 ![todo image](todo/public/Images/todo.png)
