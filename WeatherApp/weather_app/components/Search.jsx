@@ -16,15 +16,15 @@ function Search() {
   };
   return (
     <div onSubmit={handleSubmitCity} className="w-full">
-      <form className="w-full sm:flex items-center justify-evenly  mt-10">
+      <form className="w-full flex items-center justify-evenly  mt-10">
         <input
-          className=" place-items-start sm:w-[60%] w-full outline-none  border-b-2 p-2"
+          className=" place-items-start w-[60%]  outline-none  border-b-2 p-2"
           placeholder="Search for places..."
           onChange={handleChangeInput}
           value={inputValue}
           type="text"
         />
-        <button className="btn w-full">
+        <button className="btn w-[40%]">
           <FaSearch />
         </button>
       </form>

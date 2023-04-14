@@ -22,13 +22,13 @@ function CurrentWeather() {
   }
 
   return (
-    <div className="w-full">
-      <div className="flex justify-center items-center">
+    <div className="w-full h-full">
+      <div className="flex justify-center items-center w-full h-full">
         {currentWeather && (
-          <div className="flex justify-center flex-col items-center relative">
-            <div className="w-full h-full flex justify-center">
+          <div className="flex justify-between flex-col items-center relative w-full h-full">
+            <div className="w-full flex justify-center items-center">
               <img
-                className="sm:w-50 sm:h-40 h-30 w-40"
+                className="sm:w-50 sm:h-40 h-40 w-40"
                 src={`http://openweathermap.org/img/w/${currentWeather.icon}.png`}
                 alt="Weather Icon"
               />
@@ -41,7 +41,7 @@ function CurrentWeather() {
               <span className="text-[30px] sm:text-[40px]">°C</span>
             </div>
             {/* name & country */}
-            <div className="flex items-center sm:text-[30px] text-[20px]">
+            <div className="flex items-center sm:text-[30px] text-[15px]">
             <span>{currentWeather.name}-</span>
             <span>{currentWeather.country}</span>
             </div>
@@ -57,7 +57,7 @@ function CurrentWeather() {
                 alt="Weather Icon"
               />
             </div>
-            <div className="w-full absloute p-1">
+            <div className="w-full flex justify-center absloute p-1">
               <img
                 className="rounded-3xl h-[100px] sm:w-[250px] sm:h-[150px] w-full p-3"
                 src={photo}

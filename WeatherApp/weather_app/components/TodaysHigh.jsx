@@ -1,18 +1,49 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Highlights from "./ui/Highlights";
 import { useContext } from "react";
 import { WeatherContext } from "@/context/WeatherContext";
 import SunsetSunrise from "./ui/SunsetSunrise";
 import Maxmin from "./ui/Maxmin";
-function ForecastWeather() {
-  const { currentWeather } = useContext(WeatherContext);
+import DailyWeather from "./DailyWeather";
+function TodaysHigh() {
+  const { currentWeather,dailyWeather } = useContext(WeatherContext);
+  // daily weather dan ay ve gün bilgisini alalım. 5 farklı verı tutacagımız ıcın bır state olusturup data'yı map ile dönüp her gün için istediğimiz verileri tutalım
+  const [editDate,setEditDate] = useState([])
+  useEffect(()=>{
+    const getDate = dailyWeather.map((item)=>{
+      const date = new Date(item.dt_txt);
+      return date.toLocaleString("en-EN", {
+        weekday: "short",
+        day: "numeric",
+        month: "long",
+      });
+    })
+    setEditDate(getDate)
+  },[dailyWeather])
+  console.log(dailyWeather)
   
   return (
     <div className="h-full w-[70%] bg-[#F8F9F9] p-10 ">
       {/* Weather for 5 days */}
-      <div className="w-full h-[30%]">
+      <div className="w-full h-[30%] flex flex-col justify-center items-start overflow-y-scroll">
         <span className="font-bold">5 days weather forecast</span>
+        
+        <div className="flex overflow-auto gap-x-3 py-2 ">
+          {dailyWeather && dailyWeather.map((item,index)=>(
+            <div key={index} className="w-[7rem] h-[8rem] bg-white rounded-3xl justify-center flex flex-col items-center ">
+                <span className="text-[13px]">{editDate[index]}</span>
+                <div className="flex items-center ">
+                <img  className="w-[50px] h-[50px]" src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} />
+                <span>{Math.round(item.main.temp)} °C</span>
+                </div>
+                
+                <span className="text-[10px]">{item.weather[0].description}</span>
+            </div>
+          ))}
+        </div>
+        
+        
       </div>
       {/* Weather for 5 days */}
 
@@ -37,4 +68,4 @@ function ForecastWeather() {
   );
 }
 
-export default ForecastWeather;
+export default TodaysHigh;

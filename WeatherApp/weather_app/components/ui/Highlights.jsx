@@ -10,7 +10,7 @@ function Highlights({title,prop,type,src}) {
           
         </div>
         <div className="relative w-[40px] h-[40px]">
-            <Image src={src} fill objectFit="cover" />
+            <Image src={src} fill objectFit="cover" alt='' />
           </div>
         <div>
 

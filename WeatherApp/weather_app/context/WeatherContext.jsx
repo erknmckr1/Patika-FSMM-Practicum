@@ -7,7 +7,7 @@ export const WeatherProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
-  const [dailyWeather,setDailyWeather] = useState(null)
+  const [dailyWeather, setDailyWeather] = useState([]);
   const [photo, setPhoto] = useState("");
 
   useEffect(() => {
@@ -30,6 +30,10 @@ export const WeatherProvider = ({ children }) => {
         );
 
         setForecastWeather(weatherData);
+        // forecast weather verilerini çektik bıze 5 gunluk 3 er saatlik aralıklar ile data geliyordu. Her günün 12:00 da olan hava durumu tahmınlerını fıltreledık ve dailyWeather state'ine attık.
+        setDailyWeather(
+          weatherData.list.filter((item) => item.dt_txt.includes("12:00:00"))
+        );
 
         //Current weather information for fetch operation START
         const {
@@ -45,40 +49,41 @@ export const WeatherProvider = ({ children }) => {
               },
             ],
             wind: { speed },
-            sys: { sunrise, sunset,country },
+            sys: { sunrise, sunset, country },
             visibility,
           },
         } = await axios(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2d25b062c228857098a45d3b1936fda2&units=metric`
         );
-        
+
         // asagıdakı if blogunda apiden gelen sunset verısını kullanabılecegımız saat formatına cevırdık. Fakat yaptıgımız ıslem asenkron oldugu ıcın verıyı cekmeden asagıdakı işlemlerde calısabılırdı bu da hataya sebep olabılırdı. Bu yuzden if blogu ile sorgudan gecırdık.
-        let sunsetTime ;
+        let sunsetTime;
         let sunriseTime;
-        if(sunset){
+        if (sunset) {
           const date = new Date(sunset * 1000);
           const sunsetHour = date.getHours();
           const sunsetMinute = date.getMinutes();
           const period = sunsetHour >= 12 ? "PM" : "AM";
-          sunsetTime = (sunsetHour < 10 ? "0" + sunsetHour : sunsetHour) +
-          ":" +
-          (sunsetMinute < 10 ? "0" + sunsetMinute : sunsetMinute) +
-          " " +
-          period;
+          sunsetTime =
+            (sunsetHour < 10 ? "0" + sunsetHour : sunsetHour) +
+            ":" +
+            (sunsetMinute < 10 ? "0" + sunsetMinute : sunsetMinute) +
+            " " +
+            period;
         }
-        if(sunrise){
+        if (sunrise) {
           const date = new Date(sunrise * 1000);
           const sunriseHour = date.getHours();
           const sunriseMinute = date.getMinutes();
           const period = sunriseHour >= 12 ? "PM" : "AM";
-          sunriseTime = (sunriseHour < 10 ? "0" + sunriseHour : sunriseHour) +
-          ":" +
-          (sunriseMinute < 10 ? "0" + sunriseMinute : sunriseMinute) +
-          " " +
-          period;
+          sunriseTime =
+            (sunriseHour < 10 ? "0" + sunriseHour : sunriseHour) +
+            ":" +
+            (sunriseMinute < 10 ? "0" + sunriseMinute : sunriseMinute) +
+            " " +
+            period;
         }
         // sunset sunrise end
-        
 
         setCurrentWeather({
           dt,
@@ -95,7 +100,7 @@ export const WeatherProvider = ({ children }) => {
           main,
           icon,
           name,
-          country
+          country,
         });
         setLoading(false);
       } catch (error) {
@@ -132,6 +137,7 @@ export const WeatherProvider = ({ children }) => {
     setLoading,
     forecastWeather,
     photo,
+    dailyWeather
   };
   return (
     <WeatherContext.Provider value={values}>{children}</WeatherContext.Provider>

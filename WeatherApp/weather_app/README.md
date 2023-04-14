@@ -44,3 +44,7 @@ JavaScript'te bir sayının virgülden sonra belirli bir sayıda hane gösterilm
 let num = 2.52;
 let formattedNum = num.toFixed(1) -> 2.5 olarak gelecek
 
+### tailwind CSS bg 
+bg-[url('/bg/cloudsbg.png')]
+
+
