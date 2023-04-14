@@ -40,7 +40,12 @@ function CurrentWeather() {
               </span>
               <span className="text-[30px] sm:text-[40px]">°C</span>
             </div>
-            <span className="text-[30px]">{currentWeather.name}</span>
+            {/* name & country */}
+            <div className="flex items-center sm:text-[30px] text-[20px]">
+            <span>{currentWeather.name}-</span>
+            <span>{currentWeather.country}</span>
+            </div>
+            
             <div className="w-full py-4  flex sm:flex-row flex-col sm:justify-evenly items-center">
               <span>{day}</span>
               <span className="text-[#D7DBDD ]">{time}</span>

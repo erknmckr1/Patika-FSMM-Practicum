@@ -25,8 +25,22 @@ Apiden cektiğimiz günlük hava durumu verilerini currentWeather state'ine atam
     day = date && date.toLocaleDateString("en-EN", { weekday: "long" });
     const hour = date.getHours();
     const minute = date.getMinutes();
-    time = hour + ":" + (minute < 10 ? "0" + minute : minute);
+    const period = hour >= 12 ? "PM" : "AM"; // pm ve am durumunu belırledık.
+    time =
+      (hour < 10 ? "0" + hour : hour) +
+      ":" +
+      (minute < 10 ? "0" + minute : minute) +
+      " " +
+      period;
   }
+  
 
 ### Unix zaman değeri (1970-01-01 00:00:00'dan bu yana geçen saniye)
 apiden gelen dt objesını date Date() fonskyonunu kullanarak toLocaleDateString() metodu ıle yerel tarih ve saat dilimine cevırdık. Javascripte tarihler ms cinsınden alındıgı ıcın 1000 ıle carptık 
+
+### toFixed() metodu
+JavaScript'te bir sayının virgülden sonra belirli bir sayıda hane gösterilmesini sağlamak için toFixed() metodu kullanılabilir. Bu yöntem, bir sayıyı bir dize olarak döndürür ve virgülden sonra belirli bir sayıda hane gösterir.
+
+let num = 2.52;
+let formattedNum = num.toFixed(1) -> 2.5 olarak gelecek
+

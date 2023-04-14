@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "../Search";
 import CurrentWeather from "../CurrentWeather";
-import ForecastWeather from "../ForecastWeather";
+import ForecastWeather from "../TodaysHigh";
 
 function Layout() {
   return (
