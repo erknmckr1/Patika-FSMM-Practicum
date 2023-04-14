@@ -6,6 +6,8 @@ npm run dev
 yarn dev
 ```
 ![Uygulama Resmi](/public/icons/App.png)
+
+### LİVE : https://weather-olive-sigma.vercel.app/
 ## notes to myself
 
 -  const date = new Date(currentWeather.dt * 1000)
