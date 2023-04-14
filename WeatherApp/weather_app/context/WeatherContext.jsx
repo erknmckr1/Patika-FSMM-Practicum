@@ -18,7 +18,7 @@ export const WeatherProvider = ({ children }) => {
 
         // Fetch request for location information
         const geoResponse = await fetch(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=2d25b062c228857098a45d3b1936fda2`
+          `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=2d25b062c228857098a45d3b1936fda2`
         );
         const data = await geoResponse.json();
         const lat = data[0].lat;
