@@ -11,7 +11,7 @@ function Maxmin() {
       <div className="flex flex-col justify-between items-start">
         <div className="flex items-center">
           <div className="relative w-[40px] h-[40px]">
-            <Image src="/max.png" fill objectFit="cover" alt="a" />
+            <Image src="/max.png" fill  alt="a" />
           </div>
           <div>
             <span className="text-[13px]">
@@ -23,7 +23,7 @@ function Maxmin() {
 
         <div className="flex items-center">
           <div className="relative w-[40px] h-[40px]">
-            <Image src="/min.png" fill objectFit="cover" alt="a" />
+            <Image src="/min.png" fill  alt="a" />
           </div>
           <div>
             <span className="text-[13px]">

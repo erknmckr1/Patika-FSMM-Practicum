@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { WeatherContext } from "@/context/WeatherContext";
 import SunsetSunrise from "./ui/SunsetSunrise";
 import Maxmin from "./ui/Maxmin";
-
 function TodaysHigh() {
   const { currentWeather,dailyWeather } = useContext(WeatherContext);
   // daily weather dan ay ve gün bilgisini alalım. 5 farklı verı tutacagımız ıcın bır state olusturup data'yı map ile dönüp her gün için istediğimiz verileri tutalım
@@ -21,6 +20,7 @@ function TodaysHigh() {
     })
     setEditDate(getDate)
   },[dailyWeather])
+
   
   return (
     <div className="h-full w-[67%] md:w-[70] bg-[#F8F9F9] sm:p-10 p-5">
