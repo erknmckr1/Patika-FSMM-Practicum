@@ -24,11 +24,10 @@ function TodaysHigh() {
   console.log(dailyWeather)
   
   return (
-    <div className="h-full w-[70%] bg-[#F8F9F9] p-10 ">
+    <div className="h-full w-[67%] md:w-[70] bg-[#F8F9F9] sm:p-10 p-5">
       {/* Weather for 5 days */}
-      <div className="w-full h-[30%] flex flex-col justify-center items-start overflow-y-scroll">
-        <span className="font-bold">5 days weather forecast</span>
-        
+      <span className="font-bold">5 days weather forecast</span>
+      <div className="w-full h-[30%] flex flex-col justify-center items-start overflow-auto ">
         <div className="flex overflow-auto gap-x-3 py-2 ">
           {dailyWeather && dailyWeather.map((item,index)=>(
             <div key={index} className="w-[7rem] h-[8rem] bg-white rounded-3xl justify-center flex flex-col items-center ">
