@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color:#D7DBDD ;
+}
+
+/* carousel css */
+.carousel-root{
+  @apply sm:h-[15rem] h-[10rem]
+}
+.carousel-slider{ 
+  @apply sm:h-[15rem] h-[10rem]
+}
+.slider-wrapper div{
+  @apply sm:h-[15rem] h-[10rem]
+}
+.carousel .control-dots .dot.selected{
+  @apply scale-150 bg-black
+}
