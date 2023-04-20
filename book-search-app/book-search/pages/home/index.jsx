@@ -4,7 +4,7 @@ import BooksWrapper from '@/components/BooksSection/BooksWrapper'
 
 function index() {
   return (
-    <div className='h-full w-full '>
+    <div className='h-full w-screen flex flex-col justify-center items-center '>
       <Carousel/>
       <BooksWrapper/>
     </div>
