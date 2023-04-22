@@ -19,7 +19,7 @@ function Xarousel() {
         {data &&
           data.slice(4, 8).map((item, index) => {
             return (
-              <div className="w-full h-full flex justify-evenly items-center">
+              <div key={index} className="w-full h-full flex justify-evenly items-center">
                 <div className="w-[170px]">
                   <Image
                     width={100}

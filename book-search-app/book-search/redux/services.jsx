@@ -4,11 +4,11 @@ import axios from "axios";
 export const fetchBooks = createAsyncThunk(
   "books/fetchBooks",
   async ({ queryText }) => {
-    const query = queryText === "" ? "Beyoğlu'nun en güzel abisi" : queryText;
+    //const query = queryText === "" ? "Beyoğlu'nun en güzel abisi" : queryText;
 
     try{
        // axios ile cektıgımız datayı response degıskenıne atayalım.
-    const response = await axios(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+    const response = await axios(`https://www.googleapis.com/books/v1/volumes?q=${queryText}`);
     return response.data.items.map((item) => {
     // her kitap ogesi ıcın asagıdakı ozellıklerı destructurıng yontemı ıle alalım. Ve ihtiyacımız olan verılerı nesne olarak return edelım.
         const {
