@@ -1,11 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import {AiOutlineHeart} from 'react-icons/ai'
+import { handlePushFav,removeFavoriteBook } from "@/redux/booksSlice";
 function BooksWrapper() {
-  const data = useSelector(state => state.books.data)
-  
+  const dispatch = useDispatch()
+  const {data,favoriteBooks} = useSelector(state => state.books)
+   // handlePushFav action creatorunu dıspatch ettık. Ve tıkledıgımız book kartın ıd'sini yolladık. Asagıdakı actıon creatorler favoriteBooks dızısıne objeyı cıkarıyor veya ekliyor. Bız favoriteBooks ıcınde aradıgımız öğenin durumuna göre işlemler yapıyoruz. 
+   const handleFav = (id) =>{
+    const isFavorite = favoriteBooks.some(item => item.id === id)
+    if(isFavorite){
+      dispatch(removeFavoriteBook({id}))
+    }else{
+      dispatch(handlePushFav({id}))
+    }}
+
   return (
     <div className='container mx-auto flex justify-center'>
       <div className='  grid lg:grid-cols-3 grid-cols-2 gap-5 p-5   '>
@@ -28,7 +38,8 @@ function BooksWrapper() {
                   <p className='text-[11px] sm:text-[15px]'>{item && item.title.length > 20 ? item.title.substring(0,20) + "..." : item.title}</p>
                   <Link className='text-[11px] sm:text-[15px]   underline hover:text-blue-600' href={`/detail/${item.id}`}>Detail</Link>
                 </div>
-                <button className='absolute text-[20px] sm:text-[25px] top-2 right-2 sm:top-3 sm:right-3' ><AiOutlineHeart/></button>
+                {/* kıtabın favoriteBooks dızısı ıcınde olup olmadıgı duruma gore backgroundu degıstırdık */}
+                <button onClick={() => handleFav(item.id)} className={`absolute text-[20px] sm:text-[25px] top-2 right-2 sm:top-3 sm:right-3 `} ><AiOutlineHeart className={`${favoriteBooks.some(book =>book.id === item.id) ? "bg-red-700":"bg-transparent"} rounded-full`}/></button>
               </div>
             );
           })}

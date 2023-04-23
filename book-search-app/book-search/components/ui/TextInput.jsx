@@ -11,7 +11,6 @@ function Input() {
   const handleChange = (e)=>{
       setQueryText(e.target.value)
   }
- console.log(data)
   // useEffect(()=>{
   //   dispatch(fetchBooks({queryText}))
   // },[dispatch])
@@ -21,7 +20,7 @@ function Input() {
   }
   return (
     <div className='w-full flex justify-center items-center'>
-        <input type="text" onChange={handleChange} value={queryText} className=' p-2 placeholder:text-white  placeholder:italic border-b-2 outline-none border-white bg-transparent focus:border-yellow-500 transition-all duration-500 ease-linear text-white' placeholder='search for book' />
+        <input type="text" onChange={handleChange} value={queryText} className=' sm:w-[200px] w-[150px] p-2 placeholder:text-white  placeholder:italic border-b-2 outline-none border-white bg-transparent focus:border-yellow-500 transition-all duration-500 ease-linear text-white' placeholder='search for book' />
         <button onClick={handleSubmit} className='w-[40px] h-[40px] text-white' ><FaSearch/></button>
     </div>
   )

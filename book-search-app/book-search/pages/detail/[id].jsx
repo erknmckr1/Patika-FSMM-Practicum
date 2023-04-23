@@ -1,24 +1,33 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import Link from "next/link";
 import Header from "@/components/Header/Header";
-import Details from "@/components/ui/Details";
+import {BiArrowBack} from 'react-icons/bi'
+
 function index() {
+  
   const router = useRouter();
   const data = useSelector((state) => state.books.data);
+  // query parametresını yakaladık ve datadan tıkladıgımız elemanı
   const { id } = router.query;
   const filteredData = data.find((book) => book.id === id);
 
-  console.log(id);
-  console.log(filteredData);
+  // bir öncek sayfaya gitme ıcın 
+  const handleBack = () =>{
+    router.back();
+  }
+
+ 
   return (
-    <div>
-      <Details/>
-      <div className=" w-screen h-[calc(100vh_-_88px)] flex flex-col justify-center items-center py-3">
+    <div className="h-screen">
+      <Header/>
+      <div className=" w-screen h-full flex flex-col justify-center items-center py-3">
+      <h3>TİTLE</h3>
         {filteredData && (
-          <div className="w-[90%] sm:w-2/3 h-full border-2 flex items-center justify-center bg-white border-black rounded-3xl booksShadow overflow-hidden ">
+          
+          <div className="mt-[5.5rem] w-[90%] sm:w-2/3  border-2 flex items-center justify-center bg-white border-black rounded-3xl booksShadow overflow-hidden relative ">
             <div className="w-1/3 h-full flex flex-col justify-center items-center border-2  ">
               <div className=" w-full  h-1/3 m-2">
                 <Image
@@ -57,6 +66,11 @@ function index() {
                 {filteredData && filteredData.description}{" "}
               </p>
             </div>
+            <div  onClick={handleBack}  className="cursor-pointer absolute top-2 left-0  sm:top-4 sm:right-32 hover:text-blue-700 flex items-center" >
+            <button className="text-[25px]"><BiArrowBack/></button>
+            <span className="text-[10px]">previous page</span>
+            </div>
+            
           </div>
         )}
       </div>

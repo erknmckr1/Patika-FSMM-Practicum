@@ -7,7 +7,7 @@ function Xarousel() {
   const data = useSelector((state) => state.books.data);
 
   return (
-    <div className=" w-full my-5 p-5 bg-[#E5E7E9] container mx-auto rounded-3xl">
+    <div className=" w-full my-5 p-5 bg-[#E5E7E9] container mx-auto rounded-3xl mt-[5.5rem] ">
       <Carousel
         showArrows={false}
         showThumbs={false}

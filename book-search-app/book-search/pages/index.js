@@ -3,8 +3,8 @@ import Home from "./home/index";
 export default function Index() {
   return (
     <div className="w-screen">
-    <Header/>
-    <Home/>
+      <Header />
+      <Home />
     </div>
   );
 }
