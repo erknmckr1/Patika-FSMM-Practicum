@@ -13,7 +13,8 @@ pnpm dev
 - Redux Toolkit
 - React Responsive Carousel
 - React icons
-  
+## Live 
+live: https://patika-fsmm-practicum-n7tv.vercel.app/
 ## Project Photo
 ![Uygulama Resmi](public/bookapp.png)
 ## Notes myself
