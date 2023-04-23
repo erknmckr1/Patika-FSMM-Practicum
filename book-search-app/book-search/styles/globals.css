@@ -30,3 +30,6 @@ body {
 .title{
   @apply text-[20px] text-[#D4AC0D] font-semibold
 }
+.active{
+  @apply text-[blue] scale-125
+}
