@@ -7,7 +7,6 @@ import { handlePushFav,removeFavoriteBook } from "@/redux/booksSlice";
 function Favorite() {
     const dispatch = useDispatch()
     const {favoriteBooks} = useSelector(state =>state.books)
-    console.log(favoriteBooks)
     const handleFav = (id) =>{
       const isFavorite = favoriteBooks.some(item => item.id === id)
       if(isFavorite){
@@ -16,9 +15,9 @@ function Favorite() {
         dispatch(handlePushFav({id}))
       }}
   return (
-    <div className='w-full h-full absolute top-[5.5rem]'>
-      <div className='container mx-auto flex justify-center'>
-      <div className='  grid lg:grid-cols-3 grid-cols-2 gap-5 p-5   '>
+    <div className='w-full h-full absolute top-[5.5rem] '>
+      <div className='container mx-auto flex justify-center '>
+      <div className='  grid lg:grid-cols-3 grid-cols-2 gap-5 p-5 mb-[2rem]  '>
       {favoriteBooks &&
           favoriteBooks.map((item, index) => {
             return (

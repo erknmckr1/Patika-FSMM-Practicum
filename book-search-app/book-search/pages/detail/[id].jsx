@@ -5,7 +5,7 @@ import { useSelector,useDispatch } from "react-redux";
 import Link from "next/link";
 import Header from "@/components/Header/Header";
 import {BiArrowBack} from 'react-icons/bi'
-
+import Footer from "@/components/Footer/Footer";
 function index() {
   
   const router = useRouter();
@@ -27,7 +27,7 @@ function index() {
       <h3>TİTLE</h3>
         {filteredData && (
           
-          <div className="mt-[5.5rem] w-[90%] sm:w-2/3  border-2 flex items-center justify-center bg-white border-black rounded-3xl booksShadow overflow-hidden relative ">
+          <div className="mt-[3.5rem] w-[90%] sm:w-2/3  border-2 flex items-center justify-center bg-white border-black rounded-3xl booksShadow overflow-hidden relative mb-[2.5rem] ">
             <div className="w-1/3 h-full flex flex-col justify-center items-center border-2  ">
               <div className=" w-full  h-1/3 m-2">
                 <Image
@@ -74,6 +74,7 @@ function index() {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }

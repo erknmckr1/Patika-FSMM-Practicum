@@ -15,14 +15,15 @@ function Input() {
   //   dispatch(fetchBooks({queryText}))
   // },[dispatch])
 
-  const handleSubmit = () =>{
+  const handleSubmit = (e) =>{
+    e.preventDefault()
     dispatch(fetchBooks({queryText}))
   }
   return (
-    <div className='w-full flex justify-center items-center'>
-        <input type="text" onChange={handleChange} value={queryText} className=' sm:w-[200px] w-[150px] p-2 placeholder:text-white  placeholder:italic border-b-2 outline-none border-white bg-transparent focus:border-yellow-500 transition-all duration-500 ease-linear text-white' placeholder='search for book' />
-        <button onClick={handleSubmit} className='w-[40px] h-[40px] text-white' ><FaSearch/></button>
-    </div>
+    <form onSubmit={handleSubmit} className='w-full flex justify-center items-center'>
+        <input type="text" onChange={handleChange} value={queryText} className=' sm:w-[200px] w-[150px] p-2 placeholder:text-white  placeholder:italic border-b-2 outline-none border-white bg-transparent focus:border-yellow-500 transition-all duration-500 ease-linear text-white' placeholder='search...' />
+        <button type='submit' className='w-[40px] h-[40px] text-white' ><FaSearch/></button>
+    </form>
   )
 }
 

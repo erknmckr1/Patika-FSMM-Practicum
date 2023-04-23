@@ -18,7 +18,7 @@ function BooksWrapper() {
 
   return (
     <div className='container mx-auto flex justify-center'>
-      <div className='  grid lg:grid-cols-3 grid-cols-2 gap-5 p-5   '>
+      <div className='  grid lg:grid-cols-3 grid-cols-2 gap-5 p-5 mb-[1.4rem]   '>
       {data &&
           data.map((item, index) => {
             return (

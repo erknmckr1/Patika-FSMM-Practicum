@@ -18,7 +18,8 @@ function Header() {
     <div className='bg-black  h-[5.5rem] fixed z-30 w-full px-3 '>
         <div className='container mx-auto h-full flex items-center justify-between w-full relative'>
             <Logo/>
-            {router.asPath === '/' ? <TextInput/> : null}
+            {/* path "/" ise ınput gözükecek */}
+            {router.asPath === '/' ? <TextInput/> : <div className='text-white italic sm:text-[30px] text-[18px] underline underline-offset-4 '>Your Favorite Books</div>}
             <button className='text-white sm:hidden block' onClick={toggleMenu}><CiMenuBurger/></button>
             <nav className={`sm:text-white bg-white sm:bg-transparent w-[100px] h-[100] sm:w-[300px] ${isMenuOpen ? "block" : "hidden"} sm:block sm:static absolute right-0 top-[3.5rem] opacity-80  transition-all duration-500 ease-in-out`}>
                 <ul className='flex flex-col sm:flex-row justify-center items-center'>
